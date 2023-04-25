@@ -9,7 +9,7 @@ def create_body(space, body_pos):
 
 def draw_body(objects):
    for object in objects:
-      pygame.draw.circle(screen,(0,0,0), object.body.position, 30)
+      pygame.draw.circle(screen,("#2A2F4F"), object.body.position, 30)
 
 def create_static_obj(space, vertices):
    body = pymunk.Body(body_type = pymunk.Body.STATIC)
@@ -26,6 +26,7 @@ def draw_static_body(static_objects):
      pygame.draw.polygon(screen, (0,0,0), object["vs"], object["w"])
 
 pygame.init()
+pygame.display.set_caption('2D Physics SIM')
 screen = pygame.display.set_mode((800, 800)) # Display Surface
 clock = pygame.time.Clock() # Game Clock
 space = pymunk.Space()
@@ -44,7 +45,7 @@ while True:
           sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
            object_body.append(create_body(space, event.pos))
-    screen.fill("cyan")
+    screen.fill("#B9EDDD")
     draw_body(object_body)
     draw_static_body(static_object)
     space.step(1/50)
